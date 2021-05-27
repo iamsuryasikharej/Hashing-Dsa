@@ -18,7 +18,8 @@ class Hash {
            Node newNode =new Node();
            newNode.key=elem;
            newNode.index=index;
-           x[index].start=newNode;
+           x[index].start=new Node();
+           x[index].start.next=newNode;
          
            x[index].end=newNode;
        }
@@ -57,27 +58,46 @@ class Hash {
     {
         //Searching time complexity O(1+m) where m is loadfacor
         int index=hashFunc(elementToSearch);
-        Node n=x[index].start.next;
+        if (x[index].start==null)
+        {
+            
+            System.out.println("item not in HashTable");
+        }
+        else{
+        Node n=x[index].start;
         Node temp=n;
-        while(temp.next!=null)
+        int c=0;
+        while(temp.next.next!=null)
         {
             // System.out.println(temp.key);
+           
            if(temp.key==elementToSearch)
            {
                System.out.println("found element="+temp.key+" in"+temp.index);
+               c++;
+               break;
            }
            temp=temp.next;
         }
+    
         
-        if(temp.key==elementToSearch)
+        if(temp.key==elementToSearch && c==0)
         {
             System.out.println("found element="+temp.key+" in"+temp.index);
         }
-        else{
-            System.out.println("notfound");
+        else if (temp.key!=elementToSearch)
+        {
+            System.out.println("not in HashTable");
         }
-
+    
     }
+   
+    }
+    public void test()
+    {
+        System.out.println(x[0].start.next.key);
+    }
+
 
  
 }
