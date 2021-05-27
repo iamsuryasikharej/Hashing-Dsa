@@ -11,7 +11,7 @@ class Hash {
         }
 
     }
-    public void elem(int elem) {
+    public void insertElem(int elem) {
        int index=hashFunc(elem);
        if(x[index].start==null)
        {
@@ -55,6 +55,7 @@ class Hash {
     }
     public void search(int elementToSearch)
     {
+        //Searching time complexity O(1+m) where m is loadfacor
         int index=hashFunc(elementToSearch);
         Node n=x[index].start.next;
         Node temp=n;
